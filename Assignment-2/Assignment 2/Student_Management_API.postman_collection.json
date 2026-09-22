@@ -1,0 +1,236 @@
+{
+  "info": {
+    "_postman_id": "student-management-api-collection",
+    "name": "Student Management REST API",
+    "description": "Postman Collection to test all Student Management REST API endpoints with expected response status codes.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Get All Students - Success",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/students",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students"
+          ]
+        },
+        "description": "Returns status 200 with all students."
+      },
+      "response": []
+    },
+    {
+      "name": "2. Get Student By ID - Success",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/students/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students",
+            "1"
+          ]
+        },
+        "description": "Returns status 200 with student ID 1."
+      },
+      "response": []
+    },
+    {
+      "name": "3. Get Student By ID - Not Found",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/students/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students",
+            "999"
+          ]
+        },
+        "description": "Returns status 404 when student does not exist."
+      },
+      "response": []
+    },
+    {
+      "name": "4. Create Student - Success",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Ananya Sharma\",\n  \"age\": 20,\n  \"course\": \"B.Tech AI/ML\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/students",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students"
+          ]
+        },
+        "description": "Returns status 201 Created."
+      },
+      "response": []
+    },
+    {
+      "name": "5. Create Student - Bad Request",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Test Student\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/students",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students"
+          ]
+        },
+        "description": "Returns status 400 because age and course are missing."
+      },
+      "response": []
+    },
+    {
+      "name": "6. Update Student - Success",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Kirtika Sharma\",\n  \"age\": 21,\n  \"course\": \"B.Tech CSE\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/students/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students",
+            "1"
+          ]
+        },
+        "description": "Returns status 200 with updated student."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Update Student - Not Found",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Unknown\",\n  \"age\": 20,\n  \"course\": \"B.Tech CSE\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:3000/students/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students",
+            "999"
+          ]
+        },
+        "description": "Returns status 404 when student does not exist."
+      },
+      "response": []
+    },
+    {
+      "name": "8. Delete Student - Success",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/students/2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students",
+            "2"
+          ]
+        },
+        "description": "Returns status 200 and deletes student ID 2."
+      },
+      "response": []
+    },
+    {
+      "name": "9. Delete Student - Not Found",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/students/999",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "students",
+            "999"
+          ]
+        },
+        "description": "Returns status 404 when student does not exist."
+      },
+      "response": []
+    }
+  ]
+}
